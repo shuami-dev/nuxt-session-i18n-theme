@@ -25,7 +25,7 @@ npm install @shuami-dev/nuxt-session-i18n-theme
 
 ```ts
 export default defineNuxtConfig({
-	css: ["@shuami-dev/nuxt-session-i18n-theme/style.css"],
+  css: ["@shuami-dev/nuxt-session-i18n-theme/style.css"],
 })
 ```
 
@@ -34,7 +34,7 @@ export default defineNuxtConfig({
 
 ```ts
 export default defineNuxtConfig({
-	plugins: ["~/plugins/i18n.ts", "~/plugins/theme.ts"],
+  plugins: ["~/plugins/i18n.ts", "~/plugins/theme.ts"],
 })
 ```
 
@@ -47,9 +47,9 @@ import en from "~/locales/en.json"
 import ms from "~/locales/ms.json"
 
 export default defineNuxtPlugin((nuxtApp) => {
-	const i18n = createDynamicI18n({ en, ms }, "yoursessionId")
+  const i18n = createDynamicI18n({ en, ms }, "yoursessionId")
 
-	nuxtApp.vueApp.use(i18n)
+  nuxtApp.vueApp.use(i18n)
 })
 ```
 
@@ -60,7 +60,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 import { applyThemeMode } from "@shuami-dev/nuxt-session-i18n-theme"
 
 export default defineNuxtPlugin(() => {
-	applyThemeMode("yoursessionId")
+  applyThemeMode("yoursessionId")
 })
 ```
 
@@ -69,7 +69,7 @@ export default defineNuxtPlugin(() => {
 
 ```json
 {
-	"welcome": "Welcome"
+  "welcome": "Welcome"
 }
 ```
 
@@ -78,7 +78,7 @@ export default defineNuxtPlugin(() => {
 
 ```json
 {
-	"welcome": "Selamat Datang"
+  "welcome": "Selamat Datang"
 }
 ```
 
@@ -87,22 +87,22 @@ export default defineNuxtPlugin(() => {
 
 ```vue
 <script setup lang="ts">
-	import { useAppSession } from "@shuami-dev/nuxt-session-i18n-theme"
+  import { useAppSession } from "@shuami-dev/nuxt-session-i18n-theme"
 
-	const { keyId, language, themeMode } = useAppSession(
-		"yoursessionId",
-		"username"
-	)
+  const { keyId, language, themeMode } = useAppSession(
+    "yoursessionId",
+    "username"
+  )
 </script>
 
 <template>
-	<div>Page: index</div>
-	<div>
-		<h1>{{ $t("welcome") }}</h1>
-		<p>Key ID: {{ keyId }}</p>
-		<p>Current Language: {{ language }}</p>
-		<p>Current Theme: {{ themeMode }}</p>
-	</div>
+  <div>Page: index</div>
+  <div>
+    <h1>{{ $t("welcome") }}</h1>
+    <p>Key ID: {{ keyId }}</p>
+    <p>Current Language: {{ language }}</p>
+    <p>Current Theme: {{ themeMode }}</p>
+  </div>
 </template>
 
 <style scoped></style>
