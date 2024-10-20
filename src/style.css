@@ -1,0 +1,14 @@
+/* Light mode styles */
+body {
+  background-color: rgb(239, 244, 255);
+}
+
+/* Dark mode styles */
+html.dark body {
+  background-color: rgb(18, 18, 18);
+}
+
+html.dark {
+  --color-background: rgb(18, 18, 18);
+  --color-text: rgb(255, 255, 255);
+}

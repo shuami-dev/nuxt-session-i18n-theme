@@ -1,0 +1,61 @@
+{
+  "name": "@shuami-dev/nuxt-session-i18n-theme",
+  "private": false,
+  "version": "1.0.0",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "typescript",
+    "i18n",
+    "session",
+    "sessionstorage",
+    "localization",
+    "theme",
+    "token",
+    "jwt"
+  ],
+  "author": "Ahmad Shuami <shuami.dev@gmail.com>",
+  "license": "MIT",
+  "description": "Session, i18n and theme mode package for Nuxt 3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shuami-dev/nuxt-session-i18n-theme"
+  },
+  "dependencies": {
+    "jwt-decode": "^4.0.0",
+    "vue-i18n": "^10.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.7",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.9",
+    "vite-plugin-dts": "^4.2.4"
+  },
+  "peerDependencies": {
+    "vue-i18n": "^10.0.4"
+  },
+  "type": "module"
+}
