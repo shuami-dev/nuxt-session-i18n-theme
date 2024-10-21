@@ -89,9 +89,10 @@ export default defineNuxtPlugin(() => {
 <script setup lang="ts">
   import { useAppSession } from "@shuami-dev/nuxt-session-i18n-theme"
 
-  const { keyId, language, themeMode } = useAppSession(
-    "yoursessionId",
-    "username"
+  const { keyId, appUid, language, themeMode } = useAppSession(
+    "yoursessionId",    // Your session storage name
+    "username",         // Your token object name
+    "projectId"         // Your id if you have any (project, event, etc)
   )
 </script>
 
@@ -100,6 +101,7 @@ export default defineNuxtPlugin(() => {
   <div>
     <h1>{{ $t("welcome") }}</h1>
     <p>Key ID: {{ keyId }}</p>
+    <p>Project ID: {{ appUid }}</p>
     <p>Current Language: {{ language }}</p>
     <p>Current Theme: {{ themeMode }}</p>
   </div>

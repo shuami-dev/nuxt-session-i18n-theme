@@ -4,9 +4,11 @@ import { useI18n } from "vue-i18n"
 
 export function useAppSession(
 	sessionId: string,
-	keyField: string
+	keyField: string,
+	appField: string
 ) {
 	const keyId = ref('')
+	const appUid = ref('')
 	const language = ref('')
 	const themeMode = ref('')
 
@@ -23,21 +25,25 @@ export function useAppSession(
 				}
 			}
 
+			// jwt token handler
 			const token = parsedData?.token?.length > 1 ? parsedData?.token : 'x'
 			const inputData: any = token !== 'x' ? jwtDecode(token) : 'x'
 			const inputKey = inputData !== 'x' ? inputData?.[keyField] : ''
+
+			const inputAppUid = parsedData?.[appField] || ''
 			const inputLang = parsedData?.language || 'en'
 			const inputTheme = parsedData?.themeMode || 'light'
 
-			return {inputKey, inputLang, inputTheme}
+			return {inputKey, inputAppUid, inputLang, inputTheme}
 		}
-		return {inputKey: '', inputLang: 'en', inputTheme: 'light'}
+		return {inputKey: '', inputAppUid: '', inputLang: 'en', inputTheme: 'light'}
 	}
 
 	const setupSession = () => {
-		const {inputKey, inputLang, inputTheme} = getSessionData()
+		const {inputKey, inputAppUid, inputLang, inputTheme} = getSessionData()
 
 		keyId.value = inputKey
+		appUid.value = inputAppUid
 		language.value = inputLang
 		themeMode.value = inputTheme
 	}
@@ -58,5 +64,5 @@ export function useAppSession(
 		setupSession()
 	})
 
-	return {keyId, language, themeMode}
+	return {keyId, appUid, language, themeMode}
 }
