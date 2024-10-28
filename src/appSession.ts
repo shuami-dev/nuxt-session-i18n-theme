@@ -14,6 +14,7 @@ export function useAppSession(
 
 	const getSessionData = () => {
 		if (typeof window !== 'undefined') {
+			// Retrieve the current session data from sessionStorage
 			const data = sessionStorage.getItem(sessionId)
 			let parsedData: any = null
 
@@ -48,6 +49,22 @@ export function useAppSession(
 		themeMode.value = inputTheme
 	}
 
+	const setAppUid = (newAppUid: string) => {
+    appUid.value = newAppUid
+
+    if (typeof window !== 'undefined') {
+			// Retrieve the current session data from sessionStorage
+      const data = sessionStorage.getItem(sessionId)
+      let parsedData: any = data ? JSON.parse(data) : {}
+
+			// Update the appUid value in the session data
+      parsedData[appField] = newAppUid
+
+			// Save the updated session data back to sessionStorage
+      sessionStorage.setItem(sessionId, JSON.stringify(parsedData))
+    }
+  }
+
 	const {locale} = useI18n()
 
 	// Watch language changes and update the global i18n locale
@@ -64,5 +81,5 @@ export function useAppSession(
 		setupSession()
 	})
 
-	return {keyId, appUid, language, themeMode}
+	return {keyId, appUid, language, themeMode, setAppUid }
 }
