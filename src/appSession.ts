@@ -4,8 +4,7 @@ import { useI18n } from "vue-i18n"
 
 export function useAppSession(
 	sessionId: string,
-	keyField: string,
-	appField: string
+	keyField: string
 ) {
 	const keyId = ref('')
 	const appUid = ref('')
@@ -31,7 +30,7 @@ export function useAppSession(
 			const inputData: any = token !== 'x' ? jwtDecode(token) : 'x'
 			const inputKey = inputData !== 'x' ? inputData?.[keyField] : ''
 
-			const inputAppUid = parsedData?.[appField] || ''
+			const inputAppUid = parsedData?.appUid || ''
 			const inputLang = parsedData?.language || 'en'
 			const inputTheme = parsedData?.themeMode || 'light'
 
@@ -50,7 +49,7 @@ export function useAppSession(
 	}
 
 	const setAppUid = (newAppUid: string) => {
-    appUid.value = newAppUid
+    // appUid.value = newAppUid
 
     if (typeof window !== 'undefined') {
 			// Retrieve the current session data from sessionStorage
@@ -58,7 +57,7 @@ export function useAppSession(
       let parsedData: any = data ? JSON.parse(data) : {}
 
 			// Update the appUid value in the session data
-      parsedData[appField] = newAppUid
+			parsedData.appUid = newAppUid
 
 			// Save the updated session data back to sessionStorage
       sessionStorage.setItem(sessionId, JSON.stringify(parsedData))
