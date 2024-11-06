@@ -9,6 +9,8 @@ This package aims to simplify the implementation of user sessions and multilingu
 - Localization support with dynamic language fetching.
 - Theme management for light and dark modes.
 - Includes global CSS for styling.
+- Share application Id (e.g: event id, project id etc)
+- Share other optional parameter (e.g: optional id)
 
 ### Installation
 
@@ -89,10 +91,10 @@ export default defineNuxtPlugin(() => {
 <script setup lang="ts">
   import { useAppSession } from "@shuami-dev/nuxt-session-i18n-theme"
 
-  const { keyId, appUid, language, themeMode } = useAppSession(
-    "yoursessionId",    // Your session storage name
-    "username",         // Your token object name
-    "projectId"         // Your id if you have any (project, event, etc)
+  const { keyId, appUid, language, themeMode, optId } = useAppSession(
+    "yoursessionId",                // Your session storage name
+    "username",                     // Your token object name
+    "you-optional-id-name"          // Your optional id if you have any. Can remove this parameter if not using it
   )
 </script>
 
@@ -104,6 +106,7 @@ export default defineNuxtPlugin(() => {
     <p>Project ID: {{ appUid }}</p>
     <p>Current Language: {{ language }}</p>
     <p>Current Theme: {{ themeMode }}</p>
+    <p>Optional ID: {{ optId }}</p>
   </div>
 </template>
 
