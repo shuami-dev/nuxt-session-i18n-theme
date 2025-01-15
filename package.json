@@ -43,7 +43,7 @@
   "description": "Session, i18n and theme mode package for Nuxt 3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shuami-dev/nuxt-session-i18n-theme.git"
+    "url": "git+https://github.com/shuami-dev/nuxt-session-i18n-theme.git"
   },
   "dependencies": {
     "jwt-decode": "^4.0.0",
