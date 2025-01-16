@@ -2,9 +2,9 @@
   "name": "@shuami-dev/nuxt-session-i18n-theme",
   "private": false,
   "version": "1.0.9",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
